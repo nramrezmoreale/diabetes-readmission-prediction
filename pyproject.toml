@@ -1,0 +1,23 @@
+[project]
+name = "diabetes-readmission"
+version = "0.1.0"
+description = "Predict 30-day hospital readmission of diabetic patients (ML Zoomcamp midterm project)"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi>=0.162.2",
+    "numpy>=2.5.4",
+    "pandas>=3.1.1",
+    "pydantic>=2.14.3",
+    "scikit-learn>=1.9.1",
+    "uvicorn[standard]>=0.54.0",
+    "xgboost-cpu>=3.0",
+]
+
+[dependency-groups]
+dev = [
+    "jupyter>=1.1.1",
+    "matplotlib>=3.11.2",
+    "nbconvert>=7.17.2",
+    "requests>=2.34.2",
+    "seaborn>=0.13.2",
+]

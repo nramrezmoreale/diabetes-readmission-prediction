@@ -163,7 +163,21 @@ The service is deployed on [Render](https://render.com) as a Docker web service,
 uv run python test_predict.py https://<your-service>.onrender.com
 ```
 
-Live URL: _added after deployment_
+**Live URL: https://diabetes-readmission-corx.onrender.com** (interactive docs: https://diabetes-readmission-corx.onrender.com/docs)
+
+```bash
+uv run python test_predict.py https://diabetes-readmission-corx.onrender.com
+```
+
+```
+health: {'status': 'ok'}
+low risk example: {'readmission_probability': 0.0287, 'risk_level': 'low', 'high_risk': False}
+high risk example: {'readmission_probability': 0.4026, 'risk_level': 'high', 'high_risk': True}
+```
+
+Request to the deployed service from the Swagger UI:
+
+![Prediction from the service deployed on Render](images/render-predict-test.png)
 
 (The free plan sleeps after inactivity, so the first request can take ~1 minute.)
 

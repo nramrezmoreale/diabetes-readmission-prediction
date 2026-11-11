@@ -54,6 +54,7 @@ The strongest predictors are the number of inpatient visits in the previous year
 ├── test_predict.py           # sends example requests to the service
 ├── pyproject.toml, uv.lock   # dependencies (uv)
 ├── Dockerfile
+├── render.yaml               # cloud deployment on Render (Blueprint)
 ├── deploy-kind.sh            # deploys to a local Kubernetes cluster (kind)
 ├── k8s/                      # Kubernetes manifests
 └── images/                   # screenshots of the deployed service
@@ -150,7 +151,23 @@ docker run -it --rm -p 9696:9696 diabetes-readmission:v1
 
 Then test it with `uv run python test_predict.py` (or open http://localhost:9696/docs).
 
-### 6. Deploy to Kubernetes (kind)
+### 6. Deploy to the cloud (Render)
+
+The service is deployed on [Render](https://render.com) as a Docker web service, defined in [`render.yaml`](render.yaml) (Render Blueprint):
+
+1. Sign in to Render with GitHub.
+2. **New → Blueprint**, select this repository. Render reads `render.yaml`, builds the image from the `Dockerfile` and starts the service.
+3. When the deploy is live, test it:
+
+```bash
+uv run python test_predict.py https://<your-service>.onrender.com
+```
+
+Live URL: _added after deployment_
+
+(The free plan sleeps after inactivity, so the first request can take ~1 minute.)
+
+### 7. Deploy to Kubernetes (kind), optional
 
 Requirements: [Docker](https://docs.docker.com/get-docker/), [kind](https://kind.sigs.k8s.io/docs/user/quick-start/#installation) and [kubectl](https://kubernetes.io/docs/tasks/tools/).
 
@@ -166,7 +183,6 @@ Test the deployed service:
 uv run python test_predict.py http://localhost:30080
 ```
 
-![Service running on Kubernetes](images/kubernetes-test.png)
 
 Clean up:
 

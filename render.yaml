@@ -1,0 +1,12 @@
+# Render Blueprint: deploys the Docker image built from ./Dockerfile as a web service
+# https://render.com/docs/blueprint-spec
+services:
+  - type: web
+    name: diabetes-readmission
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /health
+    envVars:
+      - key: PORT
+        value: "9696"

@@ -69,7 +69,7 @@ The project uses [uv](https://docs.astral.sh/uv/) for dependency and virtual env
 # install uv if you don't have it
 pip install uv            # or: curl -LsSf https://astral.sh/uv/install.sh | sh
 
-git clone https://github.com/<your-user>/diabetes-readmission-prediction.git
+git clone https://github.com/nramrezmoreale/diabetes-readmission-prediction.git
 cd diabetes-readmission-prediction
 
 uv sync                   # creates .venv and installs all dependencies from uv.lock
